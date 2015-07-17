@@ -1,0 +1,14 @@
+=begin
+
+for training stealth attacks
+
+=end
+
+begin:
+waitrt?
+pause
+fput "hide"
+waitrt?
+pause
+fput "attack"
+goto "begin"

@@ -1,0 +1,66 @@
+=begin
+
+Braids grass until mind locked.
+Drops ruined braided grass in specified container.
+Usage:
+	;braid - will drop on ground
+	;braid bin - will drop in bin
+	;braid crate - will drop in crate
+	;braid bucket - will drop in bucket
+
+=end
+
+drop = script.vars[1]
+
+begin:
+pause; waitrt?
+fput "stow right"
+pause; waitrt?
+fput "stow left"
+pause; waitrt?
+
+forage:
+pause; waitrt?
+fput "forage grass"
+pause; waitrt?
+goto "forage2"
+
+forage2:
+pause; waitrt?
+fput "forage grass"
+pause; waitrt?
+
+braid:
+pause; waitrt?
+fput "braid my grass"
+pause; waitrt?
+match 'forage2', 'splice'
+match 'reset', 'braided grass is nothing more than wasted effort'
+match 'braid', 'Roundtime'
+matchwait
+
+reset:
+if drop == "bin"
+	fput "put my grass in bin"
+	fput "put my grass in bin"
+elsif drop == "crate"
+	fput "put my grass in crate"
+	fput "put my grass in crate"
+elsif drop == "bucket"
+	fput "put my grass in bucket"
+	fput "put my grass in bucket"
+else
+	fput "drop my grass"
+	fput "drop my grass"
+end
+goto "done"
+
+done:
+fput "exp mech"
+pause; waitrt?
+match "quit", "mind lock"
+match "begin", "EXP HELP"
+matchwait
+
+quit:
+

@@ -1,0 +1,19 @@
+=begin
+
+quickly store smelting items
+
+=end
+
+fput "get shovel"
+fput "put shovel on counter"
+fput "get rod"
+fput "put rod on counter"
+fput "get bellows"
+fput "put bellows on counter"
+fput "get oil"
+fput "put oil on counter"
+fput "get tongs"
+fput "put tongs on counter"
+fput "get diagonal-peen hammer"
+fput "put diagonal-peen hammer on counter"
+

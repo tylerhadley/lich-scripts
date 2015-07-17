@@ -1,0 +1,20 @@
+=begin
+
+auto-casts spell
+usage: ;cast <spell name> <spell power>
+
+=end
+
+spell = script.vars[1]
+power = script.vars[2]
+
+begin:
+waitcastrt?
+pause; waitrt?
+waitcastrt?
+fput "prep #{spell} #{power}"
+waitcastrt?
+pause 2; waitrt?
+waitcastrt?
+fput "cast"
+goto "begin"

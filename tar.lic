@@ -1,0 +1,19 @@
+=begin
+
+repeatedly casts targeted spell
+usage: ;tar <spell> <spell power>
+
+=end
+
+spell = "#{script.vars[1]}"
+power = "#{script.vars[2]}"
+
+begin:
+wait_while {checkmana < 50}
+waitrt?
+fput "tar #{spell} #{power}"
+waitcastrt?
+pause 2; waitrt?
+waitcastrt?
+fput "cast"
+goto "begin"

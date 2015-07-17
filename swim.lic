@@ -1,0 +1,32 @@
+=begin
+
+Swimming practice script for Crossing goblin brook
+
+Script will exit once Athletics is Mind Locked
+Usage ;swim
+
+=end
+
+Start:
+waitrt?
+start_script("go2", [ "1526", '_disable_confirm_' ]);
+wait_while{ running?('go2') }
+
+Loop:
+waitrt?
+fput "ne"
+waitrt?
+fput "nw"
+waitrt?
+fput "sw"
+waitrt?
+fput "se"
+waitrt?
+fput "exp athletics"
+match "done", "mind lock"
+match "loop", "Overall state of mind:"
+matchwait
+
+Done:
+waitrt?
+echo "*** Athletics MIND LOCKED ***"

@@ -1,0 +1,58 @@
+=begin
+
+Auto load, aim, fire crossbow.
+Also collects bolts and coins from dead enemies.
+
+=end
+
+begin:
+waitrt?
+fput "stance set 100 0 81"
+waitrt?
+fput "untie crossbow"
+
+train:
+waitrt?
+pause
+fput "nock"
+waitrt?
+pause
+fput "aim"
+waitrt?
+pause
+waitfor "best shot"
+waitrt?
+pause
+fput "fire"
+waitrt?
+pause
+fput "look"
+match 'loot', 'appears dead'
+match 'train', 'exits'
+match 'train', 'paths'
+matchwait
+
+loot:
+waitrt? 
+pause
+fput "skin"
+waitrt?
+pause
+fput "loot"
+waitrt?
+pause
+goto "collect"
+
+collect:
+fput "stow bolt"
+waitrt?
+match 'collect', 'you put'
+match 'coin', 'stow what'
+matchwait
+
+coin:
+fput "get coin"
+waitrt?
+match 'collect', 'you pick up'
+match 'train', 'What were you referring to?'
+matchwait

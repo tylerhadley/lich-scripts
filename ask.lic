@@ -1,0 +1,25 @@
+=begin
+
+This script is used to get a work order for a specific item.
+Example usage: ;ask mil for hard tailoring work knitted mitten
+
+=end
+
+option1 = "#{script.vars[1]}"
+option2 = "#{script.vars[2]}"
+option3 = "#{script.vars[3]}"
+option4 = "#{script.vars[4]}"
+option5 = "#{script.vars[5]}"
+option6 = "#{script.vars[6]}"
+option7 = "#{script.vars[7]}"
+
+loop:
+waitrt?
+fput "ask #{option1} #{option2} #{option3} #{option4} #{option5}"
+match 'done', "#{option6} #{option7}"
+match 'loop', "Good luck!" 
+matchwait
+
+done:
+
+

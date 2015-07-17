@@ -1,0 +1,140 @@
+#!/usr/bin/env ruby
+=begin
+
+usage ;carve <item>
+preparation: 
+	put saw, rifflers, rasp, material and carving book in container.
+	make sure items are set to stow in the same container
+	make sure book is set to item you want to craft
+
+=end
+
+#convert to shorter variables
+item = "#{script.vars[1]}"
+container = "rucksack"
+material = "stack"
+
+#make it so that the script can't be "kill alled"
+no_kill_all
+
+#main program
+begin:
+waitrt?
+fput "stow right"
+waitrt?
+fput "stow left"
+waitrt?
+fput "get carving book from my #{container}"
+pause; waitrt?
+fput "study carving book"
+pause; waitrt?
+fput "stow carving book"
+pause; waitrt?
+fput "get #{material} from my #{container}"
+pause; waitrt?
+fput "get my saw from my #{container}"
+pause; waitrt?
+fput "carve my stack with my saw"
+pause; waitrt?
+checkline = waitfor "you saw"
+nextline = get
+nextnextline = get
+override = true
+fput "stow my saw"
+pause; waitrt?
+fput "stow stack"
+pause; waitrt?
+fput "get saw from my #{container}"
+goto "check"
+
+
+check:
+if override == false
+	checkline = waitfor "You saw", "the bone shapes beneath your hands", "You scrape", "you evenly apply", "you pull", "You work", "you file", "you remove", "you cannot figure", "Your experience"
+	nextline = get
+	nextnextline = get
+end
+override = false
+
+if nextline.include? 'you notice several rough, jagged'
+	goto "jagged"
+elsif nextline.include? 'you see some discolored areas'
+	goto "discolored"
+elsif nextline.include? 'uneven'
+	goto "uneven"
+elsif nextline.include? 'sec'
+	echo nextline
+	echo nextnextline
+	if nextnextline.include? 'you complete working'
+		goto "done"
+	else
+		goto "carve"
+	end
+else
+	goto "carve"
+end
+
+carve:
+pause; waitrt?
+fput "carve my #{item} with my saw"
+pause; waitrt?
+goto "check"
+
+uneven:
+pause; waitrt?
+fput "stow saw"
+pause; waitrt?
+fput "get rasp from my #{container}"
+pause; waitrt?
+fput "scrape my #{item} with my rasp"
+pause; waitrt?
+fput "stow rasp"
+fput "get saw from my #{container}"
+pause; waitrt?
+fput "carve my #{item} with my saw"
+pause; waitrt?
+goto "check"
+
+jagged:
+pause; waitrt?
+fput "stow saw"
+pause; waitrt?
+fput "get riff from my #{container}"
+pause; waitrt?
+fput "rub my #{item} with my riff"
+pause; waitrt?
+fput "stow riff"
+fput "get saw from my #{container}"
+pause; waitrt?
+fput "carve my #{item} with my saw"
+pause; waitrt?
+goto "check"
+
+discolored:
+pause; waitrt?
+fput "stow saw"
+pause; waitrt?
+fput "get polish from my #{container}"
+pause; waitrt?
+fput "apply my polish to my #{item}"
+pause; waitrt?
+fput "stow polish"
+fput "get saw from my #{container}"
+pause; waitrt?
+fput "carve my #{item} with my saw"
+pause; waitrt?
+goto "check"
+
+done:
+pause; waitrt?
+fput "stow saw"
+pause; waitrt?
+fput "stow #{item}"
+pause; waitrt?
+fput "exp engineering"
+match "quit", "mind lock"
+match "begin", "EXP HELP"
+matchwait
+
+quit:
+

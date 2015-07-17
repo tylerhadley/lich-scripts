@@ -1,0 +1,30 @@
+=begin
+
+for use with cast.lic
+charges cambrinth item and invokes for each cast
+usage: ;cam <item> <amount to charge>
+
+=end
+
+item = script.vars[1]
+level = script.vars[2]
+container = "backpack"
+
+begin:
+pause; waitrt?
+fput "get cambrinth #{item}"
+pause; waitrt?
+
+while true do
+	waitrt?
+	pause
+	waitrt?
+	pause
+	fput "charge cambrinth #{item} #{level}"
+	waitrt?
+	pause
+	fput "invoke cambrinth #{item}"
+	waitrt?
+	waitcastrt?
+	pause 3 
+end

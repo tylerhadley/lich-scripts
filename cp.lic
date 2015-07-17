@@ -1,0 +1,26 @@
+=begin
+
+Climbing practice script.
+
+Script will exit once Athletics is Mind Locked
+
+Usage ;cp (climb target)
+
+=end
+
+Start:
+waitrt?
+fput "climb practice #{script.vars[1]}"
+match "checkxp", "You finish practicing your climbing skill and take a well-earned break."
+matchwait
+
+Checkxp:
+waitrt?
+fput "exp athletics"
+match "done", "mind lock"
+match "start", "Overall state of mind:"
+matchwait
+
+Done:
+waitrt?
+echo "*** Athletics MIND LOCKED ***"

@@ -1,0 +1,96 @@
+=begin
+
+usage ;knit <item>
+preparation: 
+	put knitting needles, material and tailoring book in container.
+	make sure items are set to stow in the same container
+	make sure book is set to item you want to craft
+
+=end
+
+#set variables
+item = script.vars[1]
+container = "haversack"
+material = "yarn"
+booktype = "tailoring"
+
+#make it so that the script can't be "kill alled"
+no_kill_all
+
+#main program
+begin:
+waitrt?
+fput "stow right"
+waitrt?
+fput "stow left"
+waitrt?
+fput "get #{booktype} book from my #{container}"
+pause; waitrt?
+fput "study #{booktype} book"
+pause; pause; waitrt?
+fput "stow #{booktype} book"
+pause; waitrt?
+fput "get #{material} from my #{container}"
+pause; waitrt?
+fput "get knitting needles from my #{container}"
+pause; waitrt?
+fput "knit my #{material} with my knitting needles"
+pause; waitrt?
+fput "stow #{material}"
+pause; waitrt?
+fput "knit my knitting needles"
+pause; waitrt?
+goto "check"
+
+check:
+line = waitfor "you knit", "you complete", "you move", "You alternate", "You begin", "You start knitting", "You continue to knit another row", "You wind your yarn", "must be cast", "knitting needles, you", "You control the yarn", "You continue picking", "your knitting"
+nextline = get
+pause; waitrt?
+if nextline.include? "Now the needles must be turned"
+	goto "turn"
+elsif nextline.include? "by turning the needles"
+	goto "turn"
+elsif nextline.include? "Next the needles must be pushed"
+	goto "push"
+elsif nextline.include? "ready to be pushed"
+	goto "push"
+elsif nextline.include? "must be cast"
+	goto "cast"
+else
+	pause; waitrt?
+	fput "knit my knitting needles"
+	pause; waitrt?
+	goto "check"
+end
+
+turn:
+fput "turn my knitting needles"
+pause; waitrt?
+goto "check"
+
+push:
+fput "push my knitting needles"
+pause; waitrt?
+goto "check"
+
+cast:
+fput "cast my knitting needles"
+pause; waitrt?
+goto "done"
+
+done:
+pause; waitrt?
+fput "stow needles"
+pause; waitrt?
+fput "stow #{item}"
+pause; waitrt?
+fput "pray kertigen"
+pause; waitrt?
+fput "exp outfitting"
+pause; waitrt?
+match "quit", "mind lock"
+match "begin", "EXP HELP"
+matchwait
+
+quit:
+

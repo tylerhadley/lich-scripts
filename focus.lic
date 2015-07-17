@@ -1,0 +1,22 @@
+=begin
+
+focus runestone
+
+=end
+
+item = "#{script.vars[1]}"
+container = "haversack"
+
+begin:
+pause; waitrt?
+fput "get #{item} from #{container}"
+pause; waitrt?
+
+while true do
+	fput "focus #{item}"
+	waitrt?
+	fput "focus #{item}"
+	waitrt?
+	waitcastrt?
+	pause 3 
+end

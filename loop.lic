@@ -1,0 +1,22 @@
+=begin
+
+loops specified commands
+
+=end
+
+option1 = "#{script.vars[1]}"
+option2 = "#{script.vars[2]}"
+option3 = "#{script.vars[3]}"
+option4 = "#{script.vars[4]}"
+option5 = "#{script.vars[5]}"
+option6 = "#{script.vars[6]}"
+
+train:
+waitrt?
+pause
+fput "#{option1} #{option2} #{option3} #{option4} #{option5} #{option6}"
+waitrt?
+pause
+goto "train"
+
+

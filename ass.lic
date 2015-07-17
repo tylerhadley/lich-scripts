@@ -1,0 +1,21 @@
+=begin
+
+assess instrument to train appraisal
+
+=end
+
+item = script.vars[1]
+container = "haversack"
+
+counter = 0
+
+begin:
+pause; waitrt?
+fput "get #{item} from #{container}"
+pause; waitrt?
+
+while true do
+	fput "assess #{item}"
+	waitrt?
+	pause
+end

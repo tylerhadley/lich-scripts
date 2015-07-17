@@ -1,0 +1,18 @@
+=begin
+
+lobs weapon, picks up weapon, repeats
+
+=end
+
+hand = "#{script.vars[1]}"
+
+train:
+waitrt?; pause
+fput "lob #{hand}"
+theline = matchfind "You lob ? at a"
+lobbed = theline.split.last
+waitrt?; pause
+fput "get #{lobbed}"
+goto "train"
+
+

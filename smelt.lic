@@ -1,0 +1,57 @@
+=begin
+
+For training forging: repeatedly smelts metal
+
+=end
+
+begin:
+waitrt?
+fput "put #{script.vars[1]} in crucible"
+fput "get rod"
+
+stir:
+waitrt?
+fput "stir crucible with my rod"
+waitrt?
+match 'shovel', 'As you complete working the fire dies down and needs more fuel.'
+match 'turn', "Upon finishing you observe clumps of molten metal accumulating along the crucible's sides."
+match 'bellows', 'As you finish the fire flickers and is unable to consume its fuel.'
+match 'done', 'You can only mix a crucible if it has something inside of it.'
+match 'stir', 'Roundtime'
+matchwait
+
+bellows:
+pause; waitrt?
+fput "get bellows"
+pause; waitrt?
+fput "push bellows"
+pause; waitrt?
+fput "stow bellows"
+pause; waitrt?
+goto "stir"
+
+shovel:
+pause; waitrt?
+fput "get shovel"
+pause; waitrt?
+fput "push fuel with my shovel"
+pause; waitrt?
+fput "stow shovel"
+pause; waitrt?
+goto "stir"
+
+turn:
+pause; waitrt?
+fput "turn crucible"
+pause; waitrt?
+goto "stir"
+
+done:
+pause; waitrt?
+fput "stow rod"
+fput "exp forging"
+match 'quit', 'mind lock'
+match 'begin', 'EXP HELP'
+matchwait
+
+quit:

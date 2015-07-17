@@ -1,0 +1,12 @@
+=begin
+
+for training attunement while stationary
+
+=end
+
+Main:
+waitfor "You reach out with your"
+pause 65
+waitrt?
+fput "per"
+goto "Main"

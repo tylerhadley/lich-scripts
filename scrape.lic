@@ -1,0 +1,38 @@
+=begin
+
+auto-scrape and bleach bones
+
+=end
+
+Start:
+waitrt?
+fput "get bones from my bundle"
+pause; waitrt?
+fput "get scraper from my rucksack"
+pause; waitrt?
+
+Scrape:
+fput "scrape my bones"
+pause; waitrt?
+waitfor "You scrape your bones"
+nextline = get
+pause; waitrt?
+if nextline.include? "as clean as you"
+	goto "pour"
+else
+	goto "scrape"
+end
+
+pour:
+fput "stow scraper"
+pause; waitrt?
+fput "get solution from my rucksack"
+pause; waitrt?
+fput "pour solution on my bones"
+pause; waitrt?
+fput "stow solution"
+pause; waitrt?
+fput "stow bones"
+pause; waitrt?
+goto "start"
+

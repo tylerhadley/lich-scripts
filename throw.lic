@@ -1,0 +1,51 @@
+=begin
+
+throw weapon, retrieve weapon
+skins and loots dead enemies
+retrieves coins
+
+=end
+
+hand = "#{script.vars[1]}"
+
+counter = 0
+
+train:
+waitrt?
+fput "throw #{hand}"
+theline = matchfind "You throw ? at a"
+lobbed = theline.split.last
+waitrt?
+fput "get #{lobbed}"
+if counter == 4
+	counter = 0
+	goto "look"
+end
+counter=counter+1
+goto "train"
+
+look:
+fput "look"
+match 'loot', 'appears dead'
+match 'train', 'exits'
+match 'train', 'paths'
+matchwait
+
+loot:
+waitrt? 
+pause
+fput "skin"
+waitrt?
+pause
+fput "loot"
+waitrt?
+pause
+goto "collect"
+
+collect:
+fput "get coin"
+waitrt?
+match 'collect', 'you pick up'
+match 'train', 'What were you referring to?'
+matchwait
+

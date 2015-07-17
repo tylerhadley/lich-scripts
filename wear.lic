@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+=begin
+
+quickly equip/remove armor
+usage: 
+	;wear true to wear armor
+	;wear false to remove armor
+
+=end
+
+wear = script.vars[1]
+head = "cowl"
+gloves = "gloves"
+hands = nil
+shield = "shield"
+armor = nil
+legs = nil
+arms = nil
+
+if wear == "true"
+	if head
+		fput "get #{head}"
+		fput "wear my #{head}"
+	end
+	if gloves
+
+		fput "get #{gloves}"
+		fput "wear my #{gloves}"
+	end
+	if shield
+		fput "get #{shield}"
+		fput "wear #{shield}"
+	end
+	if hands
+		fput "get #{hands}"
+		fput "wear #{hands}"
+	end
+	if armor
+		fput "get #{armor}"
+		fput "wear #{armor}"
+	end
+	if legs
+		fput "get #{legs}"
+		fput "wear #{legs}"
+	end
+	if arms
+		fput "get #{arms}"
+		fput "wear #{arms}"
+	end
+elsif wear == "false"
+	if head
+		fput "remove #{head}"
+		fput "stow #{head}"
+	end
+	if gloves
+		fput "remove #{gloves}"
+		fput "stow #{gloves}" 
+	end
+	if shield
+		fput "remove #{shield}"
+		fput "stow #{shield}"
+	end
+	if hands
+		fput "remove #{hands}"
+		fput "stow #{hands}"
+	end
+	if armor
+		fput "remove #{armor}"
+		fput "stow #{armor}"
+	end
+	if legs
+		fput "remove #{legs}"
+		fput "stow #{legs}"
+	end
+	if arms
+		fput "remove #{arms}"
+		fput "stow #{arms}"
+	end
+end

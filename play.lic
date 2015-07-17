@@ -1,0 +1,20 @@
+=begin
+
+for training performance
+
+=end
+
+option1 = "#{script.vars[1]}"
+option2 = "#{script.vars[2]}"
+option3 = "#{script.vars[3]}"
+option4 = "#{script.vars[4]}"
+option5 = "#{script.vars[5]}"
+
+train:
+waitrt?
+fput "play #{option1} #{option2} #{option3} #{option4} #{option5}"
+waitrt?
+waitfor "You finish"
+goto "train"
+
+

@@ -1,0 +1,14 @@
+=begin
+
+rapidly collects all coins
+
+=end
+
+collect:
+fput "get coin"
+waitrt?
+match 'collect', 'you pick up'
+match 'done', 'What were you referring to?'
+matchwait
+
+done:

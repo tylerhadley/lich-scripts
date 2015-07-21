@@ -89,5 +89,5 @@ fput "preach Chadatru is the god of courage, honor and law.;His symbol is a grea
 elsif opt == "urremtier"
 fput "preach Urrem'tier is the god of death, mercy and the afterlife.;It is to him that the spirits of the dead are entrusted.;While all eventually find death, only the best find it at Urrem'tier's hands.;His symbol is a cloven great helm." 
 elsif opt == "recite"
-fput "recite Eluned, thank you for safe journeys.;Lemicus, guide those who sail on the sea, and bring them back safely to those who wait upon the shore.;Everild, may my strength be unwavering against my foe.;May Kuniyo guide my steps in the wilderness and my blade in the midst of battle.;May Idon's glory shine on us, his charm and wit inspire us and his wrath fall far from our doorstep!;Meraud strengthen my magic that it not fail me in my time of need!;Kertigen, thanks for handsome reward of hard effort."    
+fput "recite Faenella, guide my steps.;Kuniyo, guide my blade.;Kerenhappuch, guide my power.;Eylhaar, recieve my friends.;Aldauth, recieve my enemies."    
 end

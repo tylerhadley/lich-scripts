@@ -1,12 +1,12 @@
 =begin
 
-Braids grass until mind locked.
-Drops ruined braided grass in specified container.
-Usage:
-	;braid - will drop on ground
-	;braid bin - will drop in bin
-	;braid crate - will drop in crate
-	;braid bucket - will drop in bucket
+	Braids grass until mind locked.
+	Drops ruined braided grass in specified container.
+	Usage:
+		;braid - will drop on ground
+		;braid bin - will drop in bin
+		;braid crate - will drop in crate
+		;braid bucket - will drop in bucket
 
 =end
 

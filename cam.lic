@@ -3,6 +3,7 @@
 for use with cast.lic
 charges cambrinth item and invokes for each cast
 usage: ;cam <item> <amount to charge>
+will exit when Arcana is mind locked
 
 =end
 
@@ -10,21 +11,33 @@ item = script.vars[1]
 level = script.vars[2]
 container = "backpack"
 
+counter = 0
+
 begin:
 pause; waitrt?
 fput "get cambrinth #{item}"
 pause; waitrt?
 
-while true do
-	waitrt?
-	pause
-	waitrt?
-	pause
-	fput "charge cambrinth #{item} #{level}"
-	waitrt?
-	pause
-	fput "invoke cambrinth #{item}"
-	waitrt?
-	waitcastrt?
-	pause 3 
+loop:
+waitrt?
+pause
+waitrt?
+pause
+fput "charge cambrinth #{item} #{level}"
+waitrt?
+pause
+fput "invoke cambrinth #{item}"
+waitrt?
+waitcastrt?
+pause 3
+if counter == 5
+	counter = 0
+	fput "exp arcana"
+	match "done", "mind lock"
+	match "loop", "Overall state of mind:"
+	matchwait
+else
+	counter = counter + 1
+	goto "loop"
 end
+

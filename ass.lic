@@ -14,8 +14,20 @@ pause; waitrt?
 fput "get #{item} from #{container}"
 pause; waitrt?
 
-while true do
-	fput "assess #{item}"
-	waitrt?
-	pause
+assess:
+fput "assess #{item}"
+waitrt?
+pause
+if counter == 5
+	counter = 0
+	fput "exp app"
+	match "done", "mind lock"
+	match "assess", "Overall state of mind:"
+	matchwait
+else
+	counter = counter + 1
+	goto "assess"
 end
+
+
+done:

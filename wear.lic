@@ -13,11 +13,24 @@ head = "cowl"
 gloves = "gloves"
 hands = nil
 shield = "shield"
-armor = nil
+armor = "hauberk"
 legs = nil
 arms = nil
+shirt = "shirt"
+pants = "trousers"
+elbow = "spikes"
+parry = "leg"
+container = "haversack"
 
 if wear == "true"
+	if shirt
+		fput "remove #{shirt}"
+		fput "stow #{shirt}"
+	end
+	if pants
+		fput "remove #{pants}"
+		fput "stow #{pants}"
+	end
 	if head
 		fput "get #{head}"
 		fput "wear my #{head}"
@@ -47,6 +60,15 @@ if wear == "true"
 		fput "get #{arms}"
 		fput "wear #{arms}"
 	end
+	if elbow
+		fput "get #{elbow}"
+		fput "wear #{elbow}"
+	end
+	if parry
+		fput "get #{parry}"
+		fput "wear #{parry}"
+	end
+	fput "sort automatic headtotoe"
 elsif wear == "false"
 	if head
 		fput "remove #{head}"
@@ -76,4 +98,21 @@ elsif wear == "false"
 		fput "remove #{arms}"
 		fput "stow #{arms}"
 	end
+	if elbow
+		fput "remove #{elbow}"
+		fput "stow #{elbow}"
+	end
+	if parry
+		fput "remove #{parry}"
+		fput "put #{parry} in #{container}"
+	end
+	if shirt
+		fput "get #{shirt}"
+		fput "wear #{shirt}"
+	end
+	if pants
+		fput "get #{pants}"
+		fput "wear #{pants}"
+	end
+	fput "sort automatic headtotoe"
 end

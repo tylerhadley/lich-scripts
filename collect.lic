@@ -1,0 +1,45 @@
+=begin
+
+Simply collecting script for Perception/Foraging
+
+Script will exit once Perception is Mind Locked
+
+If you wih to forage for something other than Rocks, simply swap out the word Rock in this script for anything else.
+
+Usage ;collect (forage item)
+
+-Gizmo
+
+=end
+
+counter = 0
+
+Start:
+waitrt?
+fput "collect #{script.vars[1]} #{script.vars[2]}"
+match "kick", "You manage to collect a pile"
+matchwait
+
+Kick:
+waitrt?
+fput "kick pile"
+match "checkxp", "I could not find what you were referring to."
+match "checkxp", "You take a step back and run up to the pile"
+matchwait
+
+Checkxp:
+waitrt?
+if counter == 5
+	counter = 0
+	fput "exp perception"
+	match "done", "mind lock"
+	match "start", "Overall state of mind:"
+	matchwait
+else
+	counter = counter + 1
+	goto "start"
+end
+
+Done:
+waitrt?
+echo "*** PERCEPTION MIND LOCKED ***"

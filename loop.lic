@@ -15,6 +15,7 @@ train:
 waitrt?
 pause
 fput "#{option1} #{option2} #{option3} #{option4} #{option5} #{option6}"
+waitfor "Roundtime"
 waitrt?
 pause
 goto "train"

@@ -9,7 +9,9 @@ will exit when Arcana is mind locked
 
 item = script.vars[1]
 level = script.vars[2]
-container = "backpack"
+container = "haversack"
+spell = script.vars[3]
+spelllevel = script.vars[4]
 
 counter = 0
 
@@ -21,6 +23,7 @@ pause; waitrt?
 loop:
 waitrt?
 pause
+fput "prep #{spell} #{spelllevel}"
 waitrt?
 pause
 fput "charge cambrinth #{item} #{level}"
@@ -28,9 +31,13 @@ waitrt?
 pause
 fput "invoke cambrinth #{item}"
 waitrt?
+pause
+fput "per"
+waitrt?
+pause
 waitcastrt?
-pause 3
-if counter == 5
+fput "cast"
+if counter == 2
 	counter = 0
 	fput "exp arcana"
 	match "done", "mind lock"
@@ -41,3 +48,5 @@ else
 	goto "loop"
 end
 
+done:
+fput "stow orb"

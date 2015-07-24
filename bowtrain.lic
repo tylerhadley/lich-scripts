@@ -53,6 +53,16 @@ matchwait
 coin:
 fput "get coin"
 waitrt?
-match 'collect', 'you pick up'
-match 'train', 'What were you referring to?'
+match 'coin', 'you pick up'
+match 'checkexp', 'What were you referring to?'
 matchwait
+
+checkexp:
+fput "exp cross"
+match "done", "mind lock"
+match "train", "Overall state of mind:"
+matchwait
+
+done:
+fput "tie cross to tool"
+fput "stance set 40 100 41"

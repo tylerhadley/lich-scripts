@@ -11,4 +11,8 @@ fput "hide"
 waitrt?
 pause
 fput "attack"
-goto "begin"
+match 'begin', 'melee'
+match 'begin', 'Roundtime'
+matchwait
+
+

@@ -1,0 +1,13 @@
+=begin
+
+This script will echo a message when mana is > 75%
+
+=end
+
+begin:
+while true
+	waitfor "roundtime"
+	if checkmana 75
+		echo "Ok to cast a spell!"	
+	end
+end

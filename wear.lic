@@ -19,7 +19,7 @@ arms = nil
 shirt = "shirt"
 pants = "trousers"
 elbow = "spikes"
-parry = "leg"
+parry = "stick"
 container = "haversack"
 
 if wear == "true"

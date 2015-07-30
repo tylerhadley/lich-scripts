@@ -1,0 +1,661 @@
+=begin
+  Re-write of the Crossing Climbing script that was originally
+  written by Kraelyst. This works with Lich and will run you through
+  crossing until you are locked in Athletics. 
+
+  written by: Zadrix
+=end
+
+failed_climb = [/You must be standing/i, /steepness is intimidating/i, /seem to find purchase/i, /find it hard going/i, /footing is questionable/i, /slip after a few feet/i, /wave of dizziness/i, /Struck by vertigo/i]
+
+re = Regexp.union(failed_climb)
+
+start:
+start_script("go2", [ "732", '_disable_confirm_' ]);
+wait_while{ running?('go2') }
+
+#ECHO
+#ECHO *** START OUTSIDE CROSSING BANK ***
+#ECHO
+#fput "set roomname"
+fput "awake"
+
+CLIMB:
+waitrt?
+move "NoRTHWEST"
+move "NoRTH"
+move "NoRTH"
+move "NoRTH"
+move "NoRTH"
+move "NoRTH"
+move "NoRTH"
+move "EaST"
+move "EaST"
+move "NoRTH"
+move "EaST"
+move "EaST"
+move "NoRTH"
+move "NoRTH"
+move "EaST"
+fput "gO stair"
+move "SoUTH"
+goto "climb_001"
+
+climb_001:
+fput "climb break"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_001"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_001"
+   end
+end
+
+pass_001:
+echo "*** Passed first break climb ***"
+waitrt?
+move "NoRTH"
+fput "gO gate"
+move "WeST"
+fput "gO stair"
+move "SoUTH"
+goto "climb_002"
+
+fail_001:
+echo "*** Failed first break climb ***"
+waitrt?
+goto "climb_002"
+
+climb_002:
+fput "ClIMB embrasure"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_002"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_002"
+   end
+end
+
+fail_002:
+waitrt?
+move "n"
+fput "go stair"
+move "e"
+fput "go gate"
+
+pass_002:
+waitrt?
+fput "go footpath"
+waitrt?
+goto "climb_01"
+
+climb_01:
+the_action = "fail_01"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_01"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_01"
+   end
+end
+
+pass_01:
+waitrt?
+move "n"
+fput "go stair"
+move "e"
+fput "go gate"
+fput "go footpath"
+goto "fail_01"
+
+fail_01:
+waitrt?
+move "s"
+move "down"
+move "s"
+move "s"
+move "sw"
+waitrt?
+goto "climb_02"
+
+climb_02:
+the_action = "fail_02"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_02"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_02"
+   end
+end
+
+pass_02:
+waitrt?
+move "s"
+fput "go stair"
+fput "go gate"
+fput "go bush"
+move "n"
+goto "climb_03"
+
+fail_02:
+waitrt?
+move "s"
+waitrt?
+goto "climb_03"
+
+climb_03:
+the_action = "fail_03"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_03"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_03"
+   end
+end
+
+pass_03:
+waitrt?
+move "s"
+fput "go stair"
+fput "go gate"
+goto "climb_04"
+
+fail_03:
+waitrt?
+move "s"
+goto "climb_04"
+
+climb_04:
+the_action = "fail_04"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_04"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_04"
+   end
+end
+
+pass_04:
+waitrt?
+goto "climb_05"
+
+fail_04:
+waitrt?
+fput "go gate"
+fput "go stair"
+goto "climb_05"
+
+climb_05:
+the_action = "fail_05"
+fput "ClIMB embrasure"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_05"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_05"
+   end
+end
+
+pass_05:
+waitrt?
+fput "go gate"
+fput "go stair"
+fail_05:
+waitrt?
+move "n"
+goto "climb_06"
+
+climb_06:
+the_action = "fail_06"
+fput "ClIMB break"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_06"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_06"
+   end
+end
+
+pass_06:
+waitrt?
+move "s"
+fput "go gate"
+fput "go stair"
+move "n"
+goto "climb_07"
+
+fail_06:
+waitrt?
+goto "climb_07"
+
+climb_07:
+the_action = "fail_07"
+fput "ClIMB embrasure"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_07"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_07"
+   end
+end
+
+pass_07:
+waitrt?
+move "s"
+move "s"
+fput "go gate"
+goto "travel_08"
+
+fail_07:
+waitrt?
+move "s"
+fput "go stair"
+goto "travel_08"
+
+travel_08:
+move "w"
+move "w"
+move "w"
+move "w"
+move "nw"
+move "n"
+move "n"
+move "n"
+move "n"
+move "n"
+move "n"
+move "w"
+move "w"
+move "w"
+move "w"
+fput "go bridge"
+move "w"
+move "w"
+move "w"
+move "w"
+fput "go stair"
+move "s"
+
+climb_08:
+the_action = "fail_08"
+fput "ClIMB embrasure"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_08"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_08"
+   end
+end
+
+pass_08:
+waitrt?
+goto "climb_09"
+
+fail_08:
+waitrt?
+move "n"
+fput "go stair"
+fput "go gate"
+move "nw"
+goto "climb_09"
+
+climb_09:
+the_action = "fail_09"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_09"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_09"
+   end
+end
+
+pass_09:
+waitrt?
+move "n"
+goto "climb_10"
+
+fail_09:
+waitrt?
+move "se"
+fput "go gate"
+fput "go stair"
+goto "climb_10"
+
+climb_10:
+the_action = "fail_10"
+fput "ClIMB embrasure"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_10"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_10"
+   end
+end
+
+pass_10:
+waitrt?
+fput "go gate"
+fput "go stair"
+fail_10:
+waitrt?
+move "e"
+goto "climb_11"
+
+climb_11:
+the_action = "fail_11"
+fput "ClIMB break"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_11"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_11"
+   end
+end
+
+pass_11:
+waitrt?
+move "s"
+fput "go gate"
+fput "go stair"
+move "e"
+goto "climb_12"
+
+fail_11:
+waitrt?
+goto "climb_12"
+
+climb_12:
+the_action = "fail_12"
+fput "ClIMB embrasure"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_12"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_12"
+   end
+end
+
+pass_12:
+waitrt?
+goto "climb_13"
+
+fail_12:
+waitrt?
+move "w"
+fput "go stair"
+fput "go gate"
+fput "go trail"
+move "ne"
+goto "climb_13"
+
+climb_13:
+the_action = "fail_13"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_13"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_13"
+   end
+end
+
+pass_13:
+waitrt?
+move "w"
+fput "go stair"
+fput "go gate"
+fput "go trail"
+goto "climb_14"
+
+fail_13:
+waitrt?
+move "sw"
+goto "climb_14"
+
+climb_14:
+the_action = "fail_14"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_14"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_14"
+   end
+end
+
+pass_14:
+pause 2
+pause
+waitrt?
+move "w"
+fput "go stair"
+fput "go gate"
+goto "climb_15"
+
+fail_14:
+fput "echo ***FAILED CLIMBING***"
+waitrt?
+move "s"
+goto "climb_15"
+
+climb_15:
+the_action = "fail_15"
+fput "ClIMB wall"
+pause 1
+
+line = get
+thematch = line.match(re)
+
+if thematch.nil?
+   goto "pass_15"
+else
+   if thematch.string.include? 'slip after a few feet'
+      echo "You had fallen!"
+      goto "fallen"
+   else
+      #echo "fail case, match: " + thematch.string + "."
+      goto "fail_15"
+   end
+end
+
+pass_15:
+waitrt?
+fput "go stair"
+goto "travel_15"
+
+fail_15:
+waitrt?
+fput "go gate"
+goto "travel_15"
+
+travel_15:
+move "e"
+move "e"
+move "e"
+move "e"
+move "e"
+move "e"
+move "e"
+move "e"
+move "e"
+move "s"
+move "s"
+move "s"
+move "s"
+move "s"
+move "s"
+move "se"
+fput "skill athletics"
+waitrt?
+match "climb", "EXP HELP"
+match "quit", "mind lock"
+match "quit", "dazed"
+match "quit", "bewilder"
+matchwait 
+
+
+#======================
+fallen:
+waitrt?
+match "stood", "You stand"
+match "stood", "You are already standing"
+match "fallen", "cannot manage to stand."
+match "fallen", "The weight of all your possessions"
+match "fallen", "...wait"
+fput "StAND"
+matchwait
+
+stood:
+goto "#{the_action}"
+
+QUIT:
+return

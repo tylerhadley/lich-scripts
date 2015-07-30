@@ -1,0 +1,44 @@
+=begin
+
+Script to tend someone's external wounds. They need to be sitting
+or prone to use.
+
+Syntax: ;tend <person>
+
+"Person" can be yourself.
+
+written by: Zadrix
+
+=end
+
+no_kill_all
+no_pause_all
+silence_me
+
+start:
+   fput "tend #{variable[1]} head"
+   waitrt?
+   fput "tend #{variable[1]} neck"
+   waitrt?
+   fput "tend #{variable[1]} left eye"
+   waitrt?
+   fput "tend #{variable[1]} right eye"
+   waitrt?
+   fput "tend #{variable[1]} back"
+   waitrt?
+   fput "tend #{variable[1]} left hand"
+   waitrt?
+   fput "tend #{variable[1]} left arm"
+   waitrt?
+   fput "tend #{variable[1]} right hand"
+   waitrt?
+   fput "tend #{variable[1]} right arm"
+   waitrt?
+   fput "tend #{variable[1]} left leg"
+   waitrt?
+   fput "tend #{variable[1]} right leg"
+   waitrt?
+   fput "tend #{variable[1]} chest"
+   waitrt?
+   fput "tend #{variable[1]} abdomen"
+   waitrt?

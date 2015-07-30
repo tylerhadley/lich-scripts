@@ -1,0 +1,42 @@
+=begin
+  Moves in a random direction and Power Perceives the
+  room. Repeats until you are locked in Attunement. If
+  you find a room with a critter inside, it will run to another
+  room and continue power perceiving.
+
+  written by: Zadrix
+=end
+
+waitrt?
+fput "pray meraud"
+no_kill_all
+no_pause_all
+silence_me
+
+# We assume you're starting this script in safe
+# room, so let's go ahead and start the power 
+# perception.
+
+perc:
+   fput 'perceive'
+   waitrt?
+   goto "checkexp"
+
+find_room:
+   if walk
+      run
+      echo "Finished running"
+      goto "perc"
+   else
+      goto "perc"
+   end
+
+checkexp:
+   fput "skill attunement"
+   waitrt?
+   match "find_room", "EXP HELP"
+   match "quit", "mind lock"
+   matchwait
+
+quit:
+   return

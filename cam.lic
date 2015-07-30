@@ -27,7 +27,7 @@ fput "prep #{spell} #{spelllevel}"
 waitrt?
 pause
 fput "charge cambrinth #{item} #{level}"
-waitrt?
+pause; waitrt?
 pause
 fput "invoke cambrinth #{item}"
 waitrt?

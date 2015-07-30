@@ -1,0 +1,70 @@
+=begin
+
+variable training routine
+
+=end
+cmd = script.vars[1]
+
+begin:
+
+if cmd == "pom"
+	fput "prep pom 200"
+	fput "get ink"
+	fput "invoke ink"
+	waitrt?
+	waitcastrt?
+	fput "put ink in my cloak"
+	waitcastrt?
+	fput "cast"
+
+	waitfor 'roundtime'
+	waitrt?
+end
+
+start_script("swim", ['_disable_confirm_' ]);
+wait_while{ running?('swim') }
+pause; waitrt?
+
+south:
+fput "s"
+waitrt?
+match 'south', 'you swim'
+match 'east', "you can't swim"
+matchwait
+
+east:
+fput "e"
+waitrt?
+match 'east', 'you swim'
+match 'continue', "you can't swim"
+matchwait
+
+continue:
+fput "go ship"
+
+start_script("cam", [ "orb 20 dr 5", '_disable_confirm_' ]);
+wait_while{ running?('cam') }
+
+start_script("powerwalk", ['_disable_confirm_' ]);
+wait_while{ running?('powerwalk') }
+
+start_script("go2", [ "2399", '_disable_confirm_' ]);
+wait_while{ running?('go2') }
+
+fput "go chap"
+fput "climb stair"
+
+start_script("theurgy", ['_disable_confirm_' ]);
+wait_while{ running?('theurgy') }
+
+start_script("ass", [ "spoons", '_disable_confirm_' ]);
+wait_while{ running?('ass') }
+
+fput "climb stair"
+fput "out"
+
+start_script("collect", [ "stem"]);
+wait_while{ running?('collect') }
+
+start_script("spellpractice", [ "bene 15 dr 25 pfe 25", '_disable_confirm_' ]);
+

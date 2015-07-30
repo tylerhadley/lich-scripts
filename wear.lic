@@ -69,6 +69,7 @@ if wear == "true"
 		fput "wear #{parry}"
 	end
 	fput "sort automatic headtotoe"
+	fput "stance set 40 100 41"
 elsif wear == "false"
 	if head
 		fput "remove #{head}"
@@ -115,4 +116,5 @@ elsif wear == "false"
 		fput "wear #{pants}"
 	end
 	fput "sort automatic headtotoe"
+	fput "stance set 100 40 41"
 end

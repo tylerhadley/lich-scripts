@@ -1,0 +1,28 @@
+=begin
+For use with levelup
+=end
+
+target1 = "leather"
+target2 = "cowl"
+target3 = "gloves"
+
+start:
+pause_script "#{script.vars[2]}"
+fput "exp appraisal"
+match "done", "34/34"
+match "done", "33/34"
+match "done", "32/34"
+match "appraise", "EXP HELP"
+matchwait
+
+appraise:
+fput "appraise #{target1} quick"
+pause; waitrt?
+fput "appraise #{target2} quick"
+pause; waitrt?
+fput "appraise #{target3} quick"
+pause; waitrt?
+
+done:
+unpause_script "#{script.vars[2]}"
+exit

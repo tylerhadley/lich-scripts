@@ -1,0 +1,24 @@
+=begin
+
+Will automatically listen to anyone iniating a class to you, or will listen to any class that another person joins.  Also, if you are teaching, will smile to all those who join your class.
+
+=end
+
+no_kill_all
+no_pause_all
+silence_me
+main:
+listener, teacher = matchfindword "? must LISTEN TO ?", "? begins to listen to ? teach"
+
+if teacher =~ /you/
+	pause
+	pause
+	pause
+	pause
+	pause
+	fput "smile #{listener}"
+	goto "main"
+else
+	fput "listen to #{teacher}"
+	goto "main"
+end

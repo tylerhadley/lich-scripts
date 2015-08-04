@@ -42,7 +42,7 @@ matchwait
 continue:
 fput "go ship"
 
-start_script("cam", [ "orb 20 dr 5", '_disable_confirm_' ]);
+start_script("cam", [ "volume 20 dr 5", '_disable_confirm_' ]);
 wait_while{ running?('cam') }
 
 start_script("powerwalk", ['_disable_confirm_' ]);
@@ -59,6 +59,13 @@ wait_while{ running?('theurgy') }
 
 start_script("ass", [ "spoons", '_disable_confirm_' ]);
 wait_while{ running?('ass') }
+
+fput "get spoons"
+
+start_script("play", [ "ditty on spoons for kuniyo", '_disable_confirm_' ]);
+wait_while{ running?('play') }
+
+fput "stow spoons"
 
 fput "climb stair"
 fput "out"

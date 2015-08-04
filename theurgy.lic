@@ -23,6 +23,10 @@ pause; waitrt?
 fput "snuff inc"
 fput "put inc in my cloak"
 fput "put croco in my cloak"
+fput "get chain"
+fput "meditate chain"
+pause; waitrt?
+fput "put chain in my cloak"
 fput "stand"
 fput "dance"
 pause; waitrt?
@@ -34,6 +38,7 @@ fput "get badge"
 fput "pray badge"
 pause; waitrt?
 fput "put badge in my cloak"
+
 
 fput "get gob"
 fput "sprinkle gob on khel"

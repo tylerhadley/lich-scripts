@@ -29,7 +29,7 @@ matchwait
 
 Checkxp:
 waitrt?
-if counter == 5
+if counter == 2
 	counter = 0
 	fput "exp perception"
 	match "done", "mind lock"

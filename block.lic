@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+=begin
+
+carve blocks for prayer beads
+
+=end
+
+thecase = "case" #where carving supplies are stored
+vessel = "gob" #vessel that holds holy water
+
+start:
+fput "prep bless"
+pause
+fput "forage stick"
+pause; waitrt?
+fput "get gob"
+pause
+fput "sprinkle gob on my stick"
+pause
+fput "put gob in my #{thecase}" 
+pause
+fput "get carving knife"
+waitcastrt?
+fput "cast my stick"
+waitrt?
+
+carve:
+waitrt?
+fput "carve my stick with my knife"
+waitrt?
+match 'stow', 'leaving you holding'
+match 'carve', 'roundtime'
+matchwait
+
+stow:
+fput "put my block in my #{thecase}"
+fput "put my knife in my #{thecase}"
+fput "exp mech"
+match 'done', 'MIND LOCK'
+match 'start', 'EXP HELP'
+matchwait
+
+done:

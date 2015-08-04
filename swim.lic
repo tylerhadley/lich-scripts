@@ -17,6 +17,10 @@ Loop:
 wait_while {checkstamina < 75}
 waitrt?
 fput "w"
+match "done", "can't go there"
+match "continue", "Roundtime"
+matchwait
+continue:
 waitrt?
 fput "e"
 waitrt?

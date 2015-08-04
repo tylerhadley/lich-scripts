@@ -49,4 +49,4 @@ else
 end
 
 done:
-fput "stow orb"
+fput "stow cambrinth #{item}"

@@ -15,6 +15,12 @@ waitrt?
 fput "play #{option1} #{option2} #{option3} #{option4} #{option5}"
 waitrt?
 waitfor "You finish"
-goto "train"
+fput "exp perf"
+match "done", "mind lock"
+match "train", "Overall state of mind:"
+matchwait
+
+Done:
+
 
 

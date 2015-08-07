@@ -37,49 +37,58 @@ unless match.nil?
    my_arr = match.split(' ')
    
    my_arr.each { |action|
-      #puts "Action is: #{action}."
+      echo "Action is: #{action}."
       if action.include? 'claw'
          fput "claw"
-         pause 4
+         pause; waitrt?
       elsif action.include? 'gouge'
          fput "gouge"
-         pause 4
+         pause; waitrt?
       elsif action.include? 'punch'
          fput "punch"
-         pause 4
+         pause; waitrt?
       elsif action.include? 'elbow'
          fput "elbow"
-         pause 4
+         pause; waitrt?
       elsif action.include? 'kick'
          fput "kick"
-         pause 4
+         pause; waitrt?
       elsif action.include? 'slap'
          fput "slap"
-         pause 4
+         pause; waitrt?
       elsif action.include? 'feint'
          fput "feint"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'jab'
          fput "jab"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'draw'
          fput "draw"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'slice'
          fput "slice"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'thrust'
          fput "thrust"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'chop'
          fput "chop"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'sweep'
          fput "sweep"
-         pause 7
+         pause; waitrt?
       elsif action.include? 'lunge'
          fput "lunge"
-         pause 7
+         pause; waitrt?
+      elsif action.include? 'bash'
+         fput "bash"
+         pause; waitrt?
+      elsif action.include? 'swing'
+         fput "swing"
+         pause; waitrt?
+      elsif action.include? 'slam'
+         fput "slam"
+         pause; waitrt?
       else
       end
    }

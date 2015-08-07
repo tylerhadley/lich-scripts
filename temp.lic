@@ -1,0 +1,17 @@
+
+start_script("ass", [ "spoons", '_disable_confirm_' ]);
+wait_while{ running?('ass') }
+
+fput "get spoons"
+start_script("play", [ "folk on spoons"]);
+wait_while{ running?('play') }
+fput "stow spoons"
+
+start_script("cam", [ "volume 20 dr 5", '_disable_confirm_' ]);
+wait_while{ running?('cam') }
+
+start_script("collect", [ "leaf", '_disable_confirm_' ]);
+wait_while{ running?('collect') }
+
+start_script("block", [ "", '_disable_confirm_' ]);
+wait_while{ running?('block') }

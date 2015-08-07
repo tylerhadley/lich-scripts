@@ -7,26 +7,45 @@ go through devotional rituals at altar
 fput "kneel"
 fput "pray kuniyo"
 pause; waitrt?
+fput "look altar"
+fput "per"
+pause; waitrt?
+match 'clean', "Dusty"
+match 'continue', "Roundtime"
+matchwait
+
+clean:
+fput "get my gob"
+fput "clean altar with holy water"
+waitfor "You finish your job"
+fput "put gob in my cloak"
+
+continue:
 fput "kiss altar"
 pause; waitrt?
 fput "recite Faenella, guide my steps.;Kuniyo, guide my blade.;Kerenhappuch, guide my magic.;Glythtide, thanks for the booze."    
 pause; waitrt?
+
 fput "get wine"
 fput "pour wine on altar"
 pause; waitrt?
 fput "put wine in my cloak"
-fput "get inc"
+
+fput "get my inc"
 fput "get croco"
 fput "point croco at inc"
-fput "wave inc at altar"
+fput "wave my inc at altar"
 pause; waitrt?
 fput "snuff inc"
-fput "put inc in my cloak"
+fput "put my inc in my cloak"
 fput "put croco in my cloak"
-fput "get chain"
-fput "meditate chain"
+
+fput "get my chain"
+fput "meditate my chain"
 pause; waitrt?
-fput "put chain in my cloak"
+waitfor 'You sense that you'
+fput "put my chain in my cloak"
+
 fput "stand"
 fput "dance"
 pause; waitrt?
@@ -34,14 +53,36 @@ fput "dance"
 pause; waitrt?
 fput "dance"
 pause; waitrt?
+
 fput "get badge"
 fput "pray badge"
 pause; waitrt?
 fput "put badge in my cloak"
 
-
-fput "get gob"
-fput "sprinkle gob on khel"
 fput "commune"
+fput "per"
+match 'commune', "crystal-clear"
+match 'commune', "warm blanket"
+match 'done', "Roundtime"
+matchwait
+
+commune:
+fput "get my inc"
+fput "get croco"
+fput "point croco at inc"
+fput "wave my inc at khel"
+pause; waitrt?
+fput "snuff inc"
+fput "put my inc in my cloak"
+fput "put croco in my cloak"
+
+fput "get my gob"
+fput "sprinkle my gob on khel"
 fput "put gob in my cloak"
+fput "commune meraud"
+pause; waitrt?
+fput "stand"
+
+done:
+
 
